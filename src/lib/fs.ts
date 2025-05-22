@@ -41,7 +41,7 @@ export async function getFilesWithStat() {
   const entries = await getFiles()
   const files = await Promise.all(
     entries.map(async (entry) => {
-      const stats = await stat(`${entry.parentPath}/${entry.name}`)
+      const stats = await stat(`${entry.path}/${entry.name}`)
 
       return {
         name: entry.name,
