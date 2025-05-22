@@ -10,7 +10,7 @@ export async function getItems() {
   const result = await client.execute(`SELECT * FROM stories`)
   const rows = storyListSchema.parse(result.rows)
 
-  return rows
+  return rows.toSorted((a, b) => a.title.localeCompare(b.title))
 }
 
 export async function getItemById(id: StorySchema['id']) {
