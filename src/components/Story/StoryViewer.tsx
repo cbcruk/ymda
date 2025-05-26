@@ -21,14 +21,12 @@ export function StoryViewer({ children }: PropsWithChildren) {
       data-settings-text={settings.text}
       data-settings-leading={settings.leading}
       className={`
-        data-[settings-text=base]:text-base]
-        data-[settings-text=lg]:text-lg]
-        data-[settings-text=xl]:text-xl]
-        data-[settings-leading=normal]:leading-normal]
-        data-[settings-leading=relaxed]:leading-relaxed]
-        data-[settings-leading=loose]:leading-loose]
-        text-${settings.text}
-        leading-${settings.leading}
+        data-[settings-text=base]:text-base
+        data-[settings-text=lg]:text-lg
+        data-[settings-text=xl]:text-xl
+        data-[settings-leading=normal]:leading-normal
+        data-[settings-leading=relaxed]:leading-relaxed
+        data-[settings-leading=loose]:leading-loose
       `}
     >
       <StoryViewerBody>{children}</StoryViewerBody>
