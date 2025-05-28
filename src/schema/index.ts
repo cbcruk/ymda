@@ -8,7 +8,6 @@ export const storySchema = z.object({
     .transform((v): z.infer<z.ZodArray<z.ZodString>> => JSON.parse(v)),
   size: z.number(),
   summary: z.string(),
-  body: z.string(),
   author: z.string(),
   tags: z
     .string()
@@ -26,3 +25,10 @@ export const tagSchema = z.object({
 })
 
 export type TagSchema = z.infer<typeof tagSchema>
+
+export const storyBlobSchema = z.object({
+  id: z.number(),
+  body: z.string(),
+})
+
+export type StoryBlobSchema = z.infer<typeof storyBlobSchema>

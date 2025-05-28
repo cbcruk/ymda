@@ -1,7 +1,6 @@
 import { StoryViewer } from '@/components/Story/StoryViewer'
-import { getItemById } from '@/lib/turso'
+import { getItemById, getStoryItem } from '@/lib/turso'
 import { ParamsProps } from '@/types'
-import { readFile } from 'fs/promises'
 import { Metadata } from 'next'
 
 type PageProps = ParamsProps<{ id: string }>
@@ -24,7 +23,7 @@ export async function generateMetadata({
 export default async function Page({ params }: PageProps) {
   const p = await params
   const id = decodeURIComponent(p.id)
-  const file = await readFile(`src/contents/${id}.txt`, 'utf-8')
+  const file = await getStoryItem(parseInt(id, 10))
 
-  return <StoryViewer>{file}</StoryViewer>
+  return <StoryViewer>{file.body}</StoryViewer>
 }

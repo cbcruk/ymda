@@ -1,4 +1,10 @@
-import { storyListSchema, StorySchema, tagSchema } from '@/schema'
+import {
+  storyBlobSchema,
+  StoryBlobSchema,
+  storyListSchema,
+  StorySchema,
+  tagSchema,
+} from '@/schema'
 import { createClient } from '@libsql/client'
 import { z } from 'zod'
 
@@ -101,4 +107,25 @@ export async function getCategoryAndTagGroup() {
     .parse(result.rows)
 
   return rows
+}
+
+export async function getStoryItem(id: StorySchema['id']) {
+  const result = await client.execute('SELECT * FROM story WHERE id = ?', [id])
+  const row = storyBlobSchema.parse(result.rows.at(0))
+
+  return row
+}
+
+export async function insertStoryItem({ id, body }: StoryBlobSchema) {
+  await client.execute('INSERT INTO story (id, body) VALUES (?, ?)', [id, body])
+}
+
+export async function updateStoryItem({ id, body }: StoryBlobSchema) {
+  await client.execute(
+    'UPDATE story SET id = $id, body = $body WHERE id = $id',
+    {
+      id,
+      body,
+    }
+  )
 }
