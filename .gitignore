@@ -42,3 +42,4 @@ next-env.d.ts
 src/contents/*.txt
 ymda.db
 /src/app/debug
+pocketbase
