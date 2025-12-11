@@ -1,4 +1,4 @@
-import { StorySchema } from '@/schema'
+import { StorySchema } from '@ymda/shared'
 
 function getReadTimeAndType(charCount: number) {
   const minutes = Math.ceil(charCount / 400)

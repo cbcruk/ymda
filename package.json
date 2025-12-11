@@ -3,32 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@libsql/client": "^0.15.6",
-    "next": "15.3.6",
-    "pocketbase": "^0.26.1",
-    "radix-ui": "^1.4.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.3.0",
-    "zod": "^3.24.4",
-    "zustand": "^5.0.4"
+    "dev": "pnpm --filter @ymda/web dev",
+    "build": "pnpm --filter @ymda/shared build && pnpm --filter @ymda/web build",
+    "build:shared": "pnpm --filter @ymda/shared build",
+    "start": "pnpm --filter @ymda/web start",
+    "lint": "pnpm --filter @ymda/web lint",
+    "tui": "pnpm --filter @ymda/tui start",
+    "tui:dev": "pnpm --filter @ymda/tui dev",
+    "tui:build": "pnpm --filter @ymda/tui build",
+    "dev:all": "pnpm -r dev"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.2",
-    "openai": "^4.98.0",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }

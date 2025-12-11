@@ -1,4 +1,4 @@
-import { StorySchema } from '@/schema'
+import { StorySchema } from '@ymda/shared'
 import Link from 'next/link'
 import { StoryReadTimeAndType } from './StoryReadTimeAndType'
 import { StoryTag } from './StoryTag'

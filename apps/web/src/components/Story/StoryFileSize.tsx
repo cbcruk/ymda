@@ -1,4 +1,4 @@
-import { StorySchema } from '@/schema'
+import { StorySchema } from '@ymda/shared'
 
 type FileSizeProps = Pick<StorySchema, 'size'>
 

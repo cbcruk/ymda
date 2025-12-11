@@ -4,12 +4,12 @@ import {
   storyListSchema,
   StorySchema,
   tagSchema,
-} from '@/schema'
+} from './schema'
 import { createClient } from '@libsql/client'
 import { z } from 'zod'
 
 export const client = createClient({
-  url: 'file:ymda.db',
+  url: process.env.DATABASE_URL || 'file:ymda.db',
 })
 
 export async function getItems() {

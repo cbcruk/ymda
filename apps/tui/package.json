@@ -1,0 +1,26 @@
+{
+  "name": "@ymda/tui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "ymda-tui": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node --env-file=.env dist/index.js"
+  },
+  "dependencies": {
+    "@ymda/shared": "workspace:*",
+    "ink": "^6.5.1",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "tsup": "^8.5.1",
+    "typescript": "^5"
+  }
+}
