@@ -1,0 +1,9 @@
+.vscode/**
+node_modules/**
+*.ts
+!dist/**/*.js
+!dist/**/*.wasm
+*.map
+.gitignore
+pnpm-lock.yaml
+tsconfig.json

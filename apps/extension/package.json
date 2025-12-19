@@ -1,0 +1,90 @@
+{
+  "name": "ymda",
+  "displayName": "ymda",
+  "description": "SQLite 소설 DB 탐색기",
+  "version": "0.1.0",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ymda.openDatabase",
+        "title": "ymda: 데이터베이스 열기"
+      },
+      {
+        "command": "ymda.browseStories",
+        "title": "ymda: 소설 목록"
+      },
+      {
+        "command": "ymda.searchStories",
+        "title": "ymda: 소설 검색"
+      },
+      {
+        "command": "ymda.refresh",
+        "title": "ymda: 새로고침",
+        "icon": "$(refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ymda",
+          "title": "ymda",
+          "icon": "$(book)"
+        }
+      ]
+    },
+    "views": {
+      "ymda": [
+        {
+          "id": "ymdaExplorer",
+          "name": "소설 탐색기"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "ymda.refresh",
+          "when": "view == ymdaExplorer",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "ymda",
+      "properties": {
+        "ymda.databasePath": {
+          "type": "string",
+          "default": "",
+          "description": "SQLite 데이터베이스 파일 경로"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm build",
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap && cp ../../node_modules/.pnpm/sql.js@*/node_modules/sql.js/dist/sql-wasm.wasm dist/",
+    "watch": "pnpm build -- --watch",
+    "package": "vsce package --no-dependencies",
+    "release": "pnpm build && pnpm package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/sql.js": "^1.4.9",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "sql.js": "^1.11.0"
+  }
+}
